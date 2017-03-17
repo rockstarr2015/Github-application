@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-expanded="false">
@@ -18,9 +18,9 @@
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="username" (keyup.enter)="search()">
+          <input   type="text" class="form-control" placeholder="Search GitHub" [(ngModel)]="username" (keyup.enter)="search()">
         </div>
-        <button>Search</button>
+
       </form>
 
 
@@ -31,7 +31,7 @@
 </nav><!--end of the nav-->
 
 
-<div *ngIf="user" class="container">
+<div *ngIf="user" class="container" style="margin-top: 70px">
 
 
   <!--navbar-->
@@ -48,39 +48,39 @@
           </div><!--end of col-sm-4-->
 
           <div class="col-sm-8">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <h4>
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    Username: <strong>{{user.name}}</strong>
-                  </h4>
-                </li>
-                <li class="list-group-item">
-                  <h4>
-                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                    Location: {{user.location}}
-                  </h4>
-                </li>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h4>
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  Username: <strong>{{user.name}}</strong>
+                </h4>
+              </li>
+              <li class="list-group-item">
+                <h4>
+                  <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                  Location: {{user.location}}
+                </h4>
+              </li>
 
-                <li class="list-group-item">
-                  <span class="glyphico glyphicon-envelope" aria-hidden="true"></span>
-                  Email: {{user.email}}
-                </li>
+              <li class="list-group-item">
+                <span class="glyphico glyphicon-envelope" aria-hidden="true"></span>
+                Email: {{user.email}}
+              </li>
 
-                <li class="list-group-item">
-                  <button type="button" class="btn btn-info">
+              <li class="list-group-item">
+                <button type="button" class="btn btn-info">
                   Followers: {{user.followers}}
-                    </button><!--end of info button-->
+                </button><!--end of info button-->
 
-                  <button class="btn btn-success">
-                    Following: {{user.following}}
-                  </button><!--end of the success btn-->
-                </li>
-
-
+                <button class="btn btn-success">
+                  Following: {{user.following}}
+                </button><!--end of the success btn-->
+              </li>
 
 
-              </ul><!--end of ul-->
+
+
+            </ul><!--end of ul-->
           </div><!--end of col-sm-8-->
         </div>
       </div><!--end of panel body-->
@@ -88,127 +88,127 @@
 
 
 
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#2" data-toggle="tab">Repositories</a> </li>
-        <li><a href="#3" data-toggle="tab">Stars</a> </li>
-        <li><a href="#4" data-toggle="tab">Followers</a> </li>
-        <li><a href="#5" data-toggle="tab">Following</a> </li>
-      </ul>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#2" data-toggle="tab">Repositories</a> </li>
+      <li><a href="#3" data-toggle="tab">Stars</a> </li>
+      <li><a href="#4" data-toggle="tab">Followers</a> </li>
+      <li><a href="#5" data-toggle="tab">Following</a> </li>
+    </ul>
 
 
-      <div class="tab-content">
+    <div class="tab-content">
 
-        <div class="tab-pane active " id="2"><!--Repositories list-->
+      <div class="tab-pane active " id="2"><!--Repositories list-->
 
-          <div class="row">
-            <div class="col-md-12">
-              <div *ngFor="let repo of repos">
-                <div class="row">
-                  <div class="col-md-9">
-                    <h3><a href="{{repo.html_url}}" target="_blank" >{{repo.name}}</a> </h3>
-                    <p>{{repo.description}}</p>
-                    <span class="label label-info">{{repo.language}}</span>
-                  </div>
-                  <div class="col-md-3" style="margin-top: 2%"></div>
-                  <span class="label label-primary">{{repo.watchers}} Watchers</span>
-                  <span class="label label-success">{{repo.forks}} Forks</span>
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngFor="let repo of repos">
+              <div class="row">
+                <div class="col-md-9">
+                  <h3><a href="{{repo.html_url}}" target="_blank" >{{repo.name}}</a> </h3>
+                  <p>{{repo.description}}</p>
+                  <span class="label label-info">{{repo.language}}</span>
                 </div>
-                <hr>
+                <div class="col-md-3" style="margin-top: 2%"></div>
+                <span class="label label-primary">{{repo.watchers}} Watchers</span>
+                <span class="label label-success">{{repo.forks}} Forks</span>
               </div>
-            </div>
-          </div>
-        </div>  <!--end of the repository list-->
-
-        <div class="tab-pane " id="3"><!--Stars-->
-
-          <div class="row">
-            <div class="col-md-12">
-              <div *ngFor="let star of stared">
-                <div class="row">
-                  <div class="col-md-9">
-                    <h3><a href="{{star.html_url}}" target="_blank">{{star.name}}</a> </h3>
-                    <p>{{star.description}}</p>
-                    <span class="label label-info">{{star.language}}</span>
-                  </div>
-                  <div class="col-md-3" style="margin-top: 2%"></div>
-                  <span class="label label-primary">{{star.watchers}} Watchers</span>
-                  <span class="label label-success">{{star.forks}} Forks</span>
-                </div>
-                <hr>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-
-        <div class="tab-pane " id="4"><!--Followers-->
-
-          <div class="row">
-            <div class="col-md-12">
-              <div *ngFor="let follow of followers">
-                <div class="row">
-
-                  <br>
-                  <div class="col-sm-1">
-
-                    <img src="{{follow.avatar_url}}" width="50px" height="50px">
-                  </div><!--end of the col-sm-2-->
-
-                  <div class="col-sm-7">
-
-
-                    <h3><a href="{{follow.html_url}}">{{follow.login}}</a> </h3>
-
-
-                  </div><!--end of the col-md-6-->
-                  <div class="col-sm-3">
-
-                  </div><!--end of col-md-3-->
-
-                </div>
-                <hr>
-              </div>
+              <hr>
             </div>
           </div>
         </div>
+      </div>  <!--end of the repository list-->
 
+      <div class="tab-pane " id="3"><!--Stars-->
 
-        <div class="tab-pane" id="5"><!--Following-->
-
-          <div class="row">
-            <div class="col-md-12">
-              <div *ngFor="let foll of following">
-                <div class="row">
-
-                  <br>
-                  <div class="col-sm-1">
-
-                    <img src="{{foll.avatar_url}}" width="50px" height="50px">
-                  </div><!--end of the col-sm-2-->
-
-                  <div class="col-sm-7">
-
-
-                    <h3><a href="{{foll.html_url}}">{{foll.login}}</a> </h3>
-
-
-                  </div><!--end of the col-md-6-->
-                  <div class="col-sm-3">
-
-                  </div><!--end of col-md-3-->
-
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngFor="let star of stared">
+              <div class="row">
+                <div class="col-md-9">
+                  <h3><a href="{{star.html_url}}" target="_blank">{{star.name}}</a> </h3>
+                  <p>{{star.description}}</p>
+                  <span class="label label-info">{{star.language}}</span>
                 </div>
-                <hr>
+                <div class="col-md-3" style="margin-top: 2%"></div>
+                <span class="label label-primary">{{star.watchers}} Watchers</span>
+                <span class="label label-success">{{star.forks}} Forks</span>
               </div>
+              <hr>
             </div>
           </div>
-
-
         </div>
 
 
       </div>
+
+      <div class="tab-pane " id="4"><!--Followers-->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngFor="let follow of followers">
+              <div class="row">
+
+                <br>
+                <div class="col-sm-1">
+
+                  <img src="{{follow.avatar_url}}" width="50px" height="50px">
+                </div><!--end of the col-sm-2-->
+
+                <div class="col-sm-7">
+
+
+                  <h3><a href="{{follow.html_url}}">{{follow.login}}</a> </h3>
+
+
+                </div><!--end of the col-md-6-->
+                <div class="col-sm-3">
+
+                </div><!--end of col-md-3-->
+
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-pane" id="5"><!--Following-->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngFor="let foll of following">
+              <div class="row">
+
+                <br>
+                <div class="col-sm-1">
+
+                  <img src="{{foll.avatar_url}}" width="50px" height="50px">
+                </div><!--end of the col-sm-2-->
+
+                <div class="col-sm-7">
+
+
+                  <h3><a href="{{foll.html_url}}">{{foll.login}}</a> </h3>
+
+
+                </div><!--end of the col-md-6-->
+                <div class="col-sm-3">
+
+                </div><!--end of col-md-3-->
+
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
 
 
 
